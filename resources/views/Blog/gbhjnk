@@ -1,0 +1,70 @@
+
+<div class="casestudy-gallery pt-120 pb-120" id="portfolio">
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="section-title2 text-center">
+    <h2>Blog Posts</h2>
+    </div>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-xl-6 col-lg-8 col-md-10">
+    {{-- <div class="button-group filter-button-group d-flex flex-wrap flex-row justify-content-md-between justify-content-center gap-3 mb-60">
+    {{-- <button data-filter="*">all</button> --}}
+    {{-- <a href="" style="font-size: bold">Entertainment & IP
+    </a>
+    <a href="">International Law</a>
+    <a href="">Property and Conveyancy</a>
+    <a href="">Criminal Litigation</a>
+    <a href="">Civil Aviation</a>
+    <a href=""> Company & Corporate Practice</a>
+    <a href="">Civil Litigation</a>
+    <a href="">Technology Law</a> --}} 
+    {{-- <button data-filter=".training">Testimonials</button>
+    <button data-filter=".maintenance">Alumni</button>
+    <button data-filter=".pilot, .alkaline-earth">Client Experience</button> --}}
+    {{-- <button data-filter=":not(.transition)">Realstate</button> --}}
+    {{-- <button data-filter=":not(.transition)">Violence</button> --}}
+    {{-- </div> --}}
+    </div>
+   
+
+    <div class="blog-grid-section pt-120 pb-120">
+        
+        <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-10 order-lg-1 order-3">
+         @foreach($posts as $post)
+        
+        <div class="blog-single1 style-2">
+        <div class="image">
+        <span class="blog-badge">{{$post->category}}</span>
+        <a href="/blog/{{$post->id}}"><img src="{{asset('images/' . $post->picture)}}" class="img-fluid" alt="image"></a>
+        </div>
+        <div class="text">
+        <div class="post-meta">
+        <div class="date">{{date('jS M Y', strtotime($post->updated_at))}}</div>
+        {{-- <a href="blog-details.html" class="comment">Comments (20)</a> --}}
+        </div>
+        <h4><a href="/blog/{{$post->id}}">{{$post->title}}.</a></h4>
+        <h4><a href="/blog/{{$post->id}}">{{$post->description}}.</a></h4>
+        @auth
+        {{-- <li>Hello, {{auth()->user()->full_name}}</li> --}}
+       @if(auth()->user()->is_admin == 1)
+       {{-- <a href="{{route('create-post')}}" class="">Create Post</a> --}}
+       <a href="/blog/{{$post->id}}/edit">Edit Post</a>
+       <a href="/blog/{{$post->id}}/delete">Delete Post</a>
+         @endif 
+         @endauth
+        </div>
+        </div>
+        @endforeach
+
+      
+            </div>
+        {{-- @endforeach --}}
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
